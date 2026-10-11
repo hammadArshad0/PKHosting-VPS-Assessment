@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PKHosting VPS Hosting</title>
+<meta name="description" content="Demo VPS pricing page (invented prices, not deployed).">
+<style>
+:root{--bg:#fff;--fg:#17202e;--mut:#4a5565;--line:#d5dbe3;--brand:#0b6b30;--brand-d:#08541f;--soft:#eef6f0;--r:12px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:1rem/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--fg);background:var(--bg);overflow-x:hidden}
+.wrap{max-width:1200px;margin:0 auto;padding:0 1rem}
+h1,h2,h3{line-height:1.2;margin:0 0 .5rem}
+h1{font-size:clamp(1.9rem,5vw,3rem)}h2{font-size:clamp(1.4rem,3vw,2rem)}
+section{padding:2.5rem 0}
+a{color:var(--brand-d)}
+:focus-visible{outline:3px solid #0a4fd1;outline-offset:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:#fff;padding:.5rem;z-index:9}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hero{background:var(--soft);text-align:center;padding:3rem 0}
+.hero p{max-width:40rem;margin:0 auto 1.5rem;color:var(--mut)}
+.btn{display:inline-block;background:var(--brand);color:#fff;border:2px solid var(--brand);border-radius:8px;padding:.7rem 1.2rem;font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--brand-d)}
+.btn.alt{background:#fff;color:var(--brand-d)}
+.ctrl{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:center;margin:1rem 0 1.5rem}
+.seg{display:inline-flex;border:2px solid var(--brand);border-radius:8px;overflow:hidden}
+.seg button{font:inherit;font-weight:600;background:#fff;color:var(--brand-d);border:0;padding:.55rem 1rem;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--brand);color:#fff}
+select{font:inherit;padding:.5rem;border:2px solid var(--brand);border-radius:8px;background:#fff;color:var(--fg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1rem;list-style:none;margin:0;padding:0}
+.card{position:relative;border:1px solid var(--line);border-radius:var(--r);padding:1.25rem;display:flex;flex-direction:column;gap:.35rem;background:#fff}
+.card.pop{border:2px solid var(--brand)}
+.tag{min-height:1.6rem;margin:0}
+.tag span{background:var(--brand);color:#fff;font-size:.8rem;font-weight:700;padding:.15rem .6rem;border-radius:99px}
+.amt{font-size:2rem;font-weight:800;margin:0}
+.amt small{font-size:1rem;font-weight:500;color:var(--mut)}
+.note{margin:0;color:var(--mut);min-height:1.55em}
+.badge{margin:0;min-height:1.9rem}
+.badge span{display:inline-block;background:#fff3c4;color:#4a3800;font-weight:700;font-size:.85rem;padding:.15rem .6rem;border-radius:6px}
+.badge:empty{visibility:hidden}
+.card ul{margin:.5rem 0 1rem;padding-left:1.1rem;color:var(--mut)}
+.card .btn{margin-top:auto;text-align:center}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r)}
+table{border-collapse:collapse;width:100%;min-width:680px}
+th,td{padding:.7rem .9rem;text-align:left;border-bottom:1px solid var(--line)}
+thead th{background:var(--soft)}
+tbody th{font-weight:600}
+tr:last-child>*{border-bottom:0}
+details{border:1px solid var(--line);border-radius:8px;margin-bottom:.6rem;padding:.2rem 1rem}
+summary{cursor:pointer;font-weight:600;padding:.7rem 0}
+details p{margin:0 0 .8rem;color:var(--mut)}
+footer{background:#13202b;color:#fff;padding:2rem 0}
+footer h2{font-size:1.2rem}
+footer ul{display:flex;flex-wrap:wrap;gap:.6rem;list-style:none;padding:0;margin:.5rem 0 1rem}
+footer li{border:1px solid #9fb0bf;border-radius:6px;padding:.3rem .8rem}
+footer p{color:#d3dce5;margin:.3rem 0}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#plans">Skip to pricing</a>
+<header class="hero">
+  <div class="wrap">
+    <h1>PKHosting VPS Hosting</h1>
+    <p>Root-access NVMe virtual servers with local support. Demo page: prices are invented and nothing here is for sale.</p>
+    <a class="btn" href="#plans">See plans</a>
+    <a class="btn alt" href="#compare">Compare specs</a>
+  </div>
+</header>
+<main>
+<section id="plans" aria-labelledby="plans-h">
+  <div class="wrap">
+    <h2 id="plans-h">Choose your VPS</h2>
+    <div class="ctrl">
+      <div class="seg" role="group" aria-label="Billing period">
+        <button type="button" id="p-m" aria-pressed="true">Monthly</button>
+        <button type="button" id="p-a" aria-pressed="false">Annually</button>
+      </div>
+      <label>Currency <select id="cur"><option value="PKR">PKR (Rs)</option><option value="USD">USD ($)</option><option value="GBP">GBP (£)</option></select></label>
+    </div>
+    <p class="vh" id="live" role="status" aria-live="polite"></p>
+    <ul class="grid" id="cards">
+      <li class="card" data-m="2400" data-name="Starter">
+        <p class="tag"></p><h3>Starter</h3>
+        <p class="amt"><span class="v">Rs 2,400</span> <small>/month</small></p>
+        <p class="note">Billed monthly</p><p class="badge"></p>
+        <ul><li>1 vCPU, 2 GB RAM</li><li>40 GB NVMe</li><li>1 IPv4</li></ul>
+        <a class="btn" href="#top" aria-label="Choose Starter (demo, no checkout)">Choose Starter</a>
+      </li>
+      <li class="card pop" data-m="4800" data-name="Growth">
+        <p class="tag"><span>Most popular</span></p><h3>Growth</h3>
+        <p class="amt"><span class="v">Rs 4,800</span> <small>/month</small></p>
+        <p class="note">Billed monthly</p><p class="badge"></p>
+        <ul><li>2 vCPU, 4 GB RAM</li><li>80 GB NVMe</li><li>1 IPv4</li></ul>
+        <a class="btn" href="#top" aria-label="Choose Growth (demo, no checkout)">Choose Growth</a>
+      </li>
+      <li class="card" data-m="9600" data-name="Scale">
+        <p class="tag"></p><h3>Scale</h3>
+        <p class="amt"><span class="v">Rs 9,600</span> <small>/month</small></p>
+        <p class="note">Billed monthly</p><p class="badge"></p>
+        <ul><li>4 vCPU, 8 GB RAM</li><li>160 GB NVMe</li><li>2 IPv4</li></ul>
+        <a class="btn" href="#top" aria-label="Choose Scale (demo, no checkout)">Choose Scale</a>
+      </li>
+      <li class="card" data-m="19500" data-name="Dedicated Core">
+        <p class="tag"></p><h3>Dedicated Core</h3>
+        <p class="amt"><span class="v">Rs 19,500</span> <small>/month</small></p>
+        <p class="note">Billed monthly</p><p class="badge"></p>
+        <ul><li>4 dedicated vCPU, 16 GB RAM</li><li>320 GB NVMe</li><li>2 IPv4</li></ul>
+        <a class="btn" href="#top" aria-label="Choose Dedicated Core (demo, no checkout)">Choose Dedicated Core</a>
+      </li>
+    </ul>
+    <p class="note">Annual billing charges 10 months for 12. Conversion uses fixed rates: 1 USD = 278.50 PKR, 1 GBP = 355.00 PKR.</p>
+  </div>
+</section>
+
+<section id="compare" aria-labelledby="cmp-h">
+  <div class="wrap">
+    <h2 id="cmp-h">Compare all plans</h2>
+    <div class="tw" tabindex="0" role="region" aria-label="Plan comparison table (scrolls sideways on small screens)">
+      <table>
+        <caption class="vh">VPS plan specifications</caption>
+        <thead><tr><th scope="col">Spec</th><th scope="col">Starter</th><th scope="col">Growth</th><th scope="col">Scale</th><th scope="col">Dedicated Core</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">vCPU</th><td>1 shared</td><td>2 shared</td><td>4 shared</td><td>4 dedicated</td></tr>
+          <tr><th scope="row">RAM</th><td>2 GB</td><td>4 GB</td><td>8 GB</td><td>16 GB</td></tr>
+          <tr><th scope="row">NVMe storage</th><td>40 GB</td><td>80 GB</td><td>160 GB</td><td>320 GB</td></tr>
+          <tr><th scope="row">Bandwidth</th><td>2 TB</td><td>4 TB</td><td>8 TB</td><td>16 TB</td></tr>
+          <tr><th scope="row">IPv4 addresses</th><td>1</td><td>1</td><td>2</td><td>2</td></tr>
+          <tr><th scope="row">Root access</th><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+          <tr><th scope="row">Operating systems</th><td>Linux</td><td>Linux</td><td>Linux, Windows</td><td>Linux, Windows</td></tr>
+          <tr><th scope="row">Backups</th><td>Weekly</td><td>Daily (3 kept)</td><td>Daily (7 kept)</td><td>Daily (14 kept)</td></tr>
+          <tr><th scope="row">Support</th><td>Ticket</td><td>Ticket + chat</td><td>Priority</td><td>Priority + phone</td></tr>
+          <tr><th scope="row">Uptime target</th><td>99.5%</td><td>99.9%</td><td>99.9%</td><td>99.95%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <h2 id="faq-h">Frequently asked questions</h2>
+    <details><summary>How does annual billing work?</summary><p>You pay for 10 months and get 12. The per-month price shown is the monthly price times 10, divided by 12.</p></details>
+    <details><summary>Which currencies can I see prices in?</summary><p>PKR, USD and GBP. Rates are fixed on this page: 1 USD = 278.50 PKR and 1 GBP = 355.00 PKR.</p></details>
+    <details><summary>Can I upgrade later?</summary><p>Yes, you can move up a plan at any time. The new plan starts on your next billing date.</p></details>
+    <details><summary>Is there root access?</summary><p>Every plan includes full root access, so you can install what you need.</p></details>
+    <details><summary>Is this a real product?</summary><p>No. This is an assessment demo with invented plans and prices.</p></details>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <h2>Payment methods we would offer</h2>
+    <ul>
+      <li>Bank transfer (IBFT / Raast)</li><li>JazzCash</li><li>Easypaisa</li><li>Visa / Mastercard</li>
+    </ul>
+    <p>Chosen for how Pakistani buyers actually pay. Reasons for the cuts are in NOTES.md.</p>
+    <p>Demo page by Hammad Arshad. Not a real offer.</p>
+  </div>
+</footer>
+<script>
+(function(){
+  var RATE={PKR:1,USD:278.5,GBP:355},SYM={PKR:"Rs ",USD:"$",GBP:"£"};
+  var st={p:"m",c:"PKR"},cards=document.querySelectorAll("#cards .card");
+  var pm=document.getElementById("p-m"),pa=document.getElementById("p-a"),sel=document.getElementById("cur"),live=document.getElementById("live");
+  try{var s=JSON.parse(localStorage.getItem("pkvps")||"{}");
+    if(s.p==="a")st.p="a";if(RATE[s.c])st.c=s.c;}catch(e){}
+  function fmt(pkr){
+    if(st.c==="PKR")return SYM.PKR+Math.round(pkr).toLocaleString("en-US");
+    return SYM[st.c]+(pkr/RATE[st.c]).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+  }
+  function render(announce){
+    var a=st.p==="a",msg=[];
+    pm.setAttribute("aria-pressed",String(!a));pa.setAttribute("aria-pressed",String(a));sel.value=st.c;
+    cards.forEach(function(el){
+      var m=Number(el.dataset.m),per=a?m*10/12:m,tot=m*10,save=m*12-tot,pct=Math.round(save/(m*12)*100);
+      el.querySelector(".v").textContent=fmt(per);
+      el.querySelector(".note").textContent=a?fmt(tot)+" billed yearly":"Billed monthly";
+      el.querySelector(".badge").innerHTML=a?"<span>Save "+fmt(save)+" ("+pct+"%)</span>":"";
+      msg.push(el.dataset.name+" "+fmt(per)+" per month");
+    });
+    if(announce)live.textContent=(a?"Annual":"Monthly")+" billing in "+st.c+". "+msg.join(". ")+".";
+  }
+  function save(){try{localStorage.setItem("pkvps",JSON.stringify(st));}catch(e){}}
+  pm.onclick=function(){st.p="m";save();render(true);};
+  pa.onclick=function(){st.p="a";save();render(true);};
+  sel.onchange=function(){st.c=sel.value;save();render(true);};
+  render(false);
+})();
+</script>
+</body>
+</html>
